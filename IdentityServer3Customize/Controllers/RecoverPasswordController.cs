@@ -1,21 +1,15 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Mvc;
-using Castle.Core.Internal;
-using DomainClass.Services.IdentityAccessControl;
-using DomainClass.Services.Persons;
-using JG.Application;
 
-namespace JahanGostar.Controllers
+namespace IdentityServer3Customize.Controllers
 {
     public class RecoverPasswordController : Controller
     {
-        private readonly IUserService _service;
-        private readonly IStudentService _studentService;
-
-        public RecoverPasswordController(IUserService service , IStudentService studentService)
+        private readonly UserService _service;
+        
+        public RecoverPasswordController()
         {
-            _service = service;
-            _studentService = studentService;
+            _service = new UserService();
         }
 
         public ActionResult Index()

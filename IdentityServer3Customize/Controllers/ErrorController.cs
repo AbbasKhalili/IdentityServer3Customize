@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace JahanGostar.Controllers
+namespace IdentityServer3Customize.Controllers
 {
     [OutputCache(NoStore = true, Duration = 0, VaryByParam = "None")]
     public class ErrorController : Controller

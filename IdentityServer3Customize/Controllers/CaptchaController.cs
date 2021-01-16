@@ -5,10 +5,9 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Web;
 using System.Web.Http;
-using JahanGostar.IdentityServer;
-using JG.Application;
+using IdentityServer3Customize.IdentityServer;
 
-namespace JahanGostar.Controllers
+namespace IdentityServer3Customize.Controllers
 {
     public class CaptchaController : ApiController
     {
