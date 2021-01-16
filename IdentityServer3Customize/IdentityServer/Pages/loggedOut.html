@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html ng-app="app" ng-controller="LayoutCtrl">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>{siteName}</title>
+    <link rel="stylesheet" href="/Content/bootstrap.min.css" />
+    <link href="/fonts/font-awesome.min.css" rel="stylesheet" />
+    <link href="/fonts/ionicons.min.css" rel="stylesheet" />
+    <!-- Theme style -->
+    <link href="/Content/Template/AdminLTE.css" rel="stylesheet" />
+    <link href="/Content/Template/fonts-fa.css" rel="stylesheet" />
+    <link href="/Content/Template/bootstrap-rtl.min.css" rel="stylesheet" />
+</head>
+<body>
+    <br />
+    <br/>
+    <br/>
+    <div class='container page-loggedOut' ng-cloak>
+    <div class="page-header">
+        <h1>
+            خروج از سیستم
+            <small>خروج شما از سیستم با موفقیت انجام شد.</small>
+        </h1>
+        <div>
+            جهت ورود مجدد <a ng-href="\">اینجا</a> کلیک کنید.
+        </div>
+    </div>
+</div>
+
+<script id='modelJson' type='application/json'>
+        {model}
+    </script>
+<script src="/Scripts/jquery-3.4.1.min.js"></script>
+<script src="/Scripts/bootstrap.min.js"></script>
+<script src="/Scripts/angular.min.js"></script>
+<script src="/Scripts/encoder.min.js"></script>
+<script src="/IdentityServer/jsApp/app.js"></script>
+</body>
+</html>
+

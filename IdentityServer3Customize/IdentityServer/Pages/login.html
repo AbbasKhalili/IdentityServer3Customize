@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html ng-app="app" ng-controller="LayoutCtrl">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+    <title>{siteName}</title>
+    <!-- Bootstrap 3.3.4 -->
+    <link rel="stylesheet" href="/Content/bootstrap.min.css" />
+
+    <link href="/fonts/font-awesome.min.css" rel="stylesheet" />
+    <link href="/fonts/ionicons.min.css" rel="stylesheet" />
+    <!-- Theme style -->
+    <link href="/Content/Site.css" rel="stylesheet" />
+    <link href="/Content/Template/AdminLTE.css" rel="stylesheet" />
+    <link href="/Content/Template/fonts-fa.css" rel="stylesheet" />
+    <link href="/Content/Template/bootstrap-rtl.min.css" rel="stylesheet" />
+    <link href="/Content/CheckBox/awesome-bootstrap-checkbox.css" rel="stylesheet" />
+    <link href="/Content/CheckBox/build.css" rel="stylesheet" />
+
+    <style>
+        #input_container {
+            position: relative;
+        }
+
+        #input_icon {
+            position: absolute;
+            bottom: 10px;
+            right: 86%;
+        }
+    </style>
+</head>
+<body class="login-page" style="text-align:center" ng-cloak>
+    <img src="../../Images/FoodLogo.png" class="FoodLogo" />
+    <div class="Loginrow" ng-show="model.loginUrl">
+        <div class="Logintab-style">
+
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a data-toggle="tab" href="#LoginTab">
+                        <span class="glyphicon glyphicon-user"></span>
+                        <span style="padding-right: 5px;">ورود به نرم افزار</span>
+                    </a>
+                </li>
+                <li>
+                    <a data-toggle="tab" href="#NotificationTab">
+                        <span class="glyphicon glyphicon-comment"></span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div id="LoginTab" class="tab-pane fade in active">
+                    <alertmessages></alertmessages>
+                    <div class="login-logo">
+                        <img src="/Images/logo.png" />
+                    </div>
+                    <form name="form" method="post" action="{{model.loginUrl}}" class="size-p1">
+                        <anti-forgery-token token="model.antiForgery"></anti-forgery-token>
+                        <div class="row">
+                            <div class="form-group has-feedback" ng-class="{ 'has-error' : form.username.$invalid && form.username.$dirty }">
+                                <input type="text" id="username" name="username" class="form-control" placeholder="نام کاربری" ng-model="model.username"
+                                       ng-disabled="alertmessage" required autofocus autocomplete="off">
+                                <span class="fa fa-user form-control-feedback" ng-class="{ 'text-red' : form.txtusername.$invalid && form.txtusername.$dirty }"></span>
+                            </div>
+
+                            <div id="input_container">
+                                <input id="password" name="password" class="form-control" placeholder="رمز عبور" ng-model="model.password"
+                                       ng-disabled="alertmessage" required autocomplete="off" ng-attr-type="{{ showPassword ? 'text':'password'}}">
+                                <span id="input_icon" class="fa fa-eye pull-left" ng-mousedown="showPassword = !showPassword" ng-mouseup="showPassword = !showPassword" ng-class="{'fa fa-eye text-green': showPassword,'fa fa-eye-slash': !showPassword}" style="cursor: pointer;">
+                                </span>
+                                <span class="fa fa-lock form-control-feedback" ng-class="{ 'text-red' : form.password.$invalid && form.password.$dirty }"></span>
+                            </div>
+                            <div class="input-group" ng-if="havecaptcha!=0" ng-class="{ 'has-error' : form.Captcha.$invalid && form.Captcha.$dirty }">
+                                <div class="input-group-btn" style="border: 0 !important">
+                                    <img id="captcha-image" ng-src="{{imageUrl}}" />
+                                </div>
+                                <input type="text" id="Captcha" name="Captcha" maxlength="10" class="form-control" ng-disabled="alertmessage" required autocomplete="off">
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="reload()" title="کد امنیتی جدید">
+                                        <i class="fa fa-refresh"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <br />
+
+                            <button class="btn btn-primary btn-block btn-flat" ng-disabled="form.$invalid || alertmessage || loading">ورود</button>
+                            <div class="text-red" ng-show="model.errorMessage">
+                                {{model.errorMessage}}
+                            </div>
+                            <div class="col-lg-12" style="padding-top: 10px;padding-bottom: 10px">
+                                <a href="/RecoverPassword">بازیابی رمز عبور</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="login-footer">
+        
+    </footer>
+    <script id='modelJson' type='application/json'>
+        {model}
+    </script>
+
+    <script src="/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/Template/jquery.sparkline.min.js"></script>
+    <script src="/Scripts/Template/jquery.slimscroll.min.js"></script>
+    <script src="/Scripts/Template/fastclick.min.js"></script>
+    <script src="/Scripts/Template/app.min.js"></script>
+
+    <script src="/Scripts/angular.min.js"></script>
+    <script src="/Scripts/angular-route.min.js"></script>
+    <script src="/Scripts/encoder.min.js"></script>
+    <script src="/IdentityServer/jsApp/app.js"></script>
+
+</body>
+</html>
+
+
